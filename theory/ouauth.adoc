@@ -1,0 +1,56 @@
+== Sequence diagram of interaction
+
+[plantuml]
+----
+@startuml
+title Google Login (OAuth 2.0) – High Level Sequence
+
+actor User
+participant "Client App\n(Web / Mobile)" as Client
+participant "Backend Server" as Backend
+participant "Google Identity\nPlatform" as Google
+
+== Login Initiation ==
+User -> Client: Click "Sign in with Google"
+
+== Authorization Request ==
+Client -> Google: Redirect to OAuth Authorization Endpoint\n(client_id, scopes, redirect_uri)
+activate Google
+
+== User Authentication & Consent ==
+Google -> User: Login + Consent Screen
+User --> Google: Approve access
+
+== Authorization Code ==
+Google --> Client: Redirect with authorization code
+deactivate Google
+
+== Token Exchange ==
+Client -> Backend: Send authorization code
+activate Backend
+
+Backend -> Google: Exchange code for tokens\n(client_id, client_secret)
+activate Google
+
+Google --> Backend: ID Token + Access Token (+ Refresh Token)
+deactivate Google
+
+== Token Verification ==
+Backend -> Backend: Verify ID Token\n(signature, issuer, audience, expiry)
+
+== User Mapping ==
+Backend -> Backend: Find or create user\n(using Google user_id)
+
+== App Session Creation ==
+Backend --> Client: App session (JWT / cookie)
+deactivate Backend
+
+== Authenticated Usage ==
+Client -> Backend: API requests with app session
+Backend --> Client: Protected resources
+
+@enduml
+----
+
+== Phase 1
+
