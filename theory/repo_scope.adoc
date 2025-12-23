@@ -1,0 +1,5 @@
+* [ ] Simple local host based google authenthication
+* [ ] Dockerizing application
+* [ ] Generating UI for redirection flow
+* [ ] Accessing gmail content for google login
+* [ ] Deploying the application on cloud and doing cloud login test

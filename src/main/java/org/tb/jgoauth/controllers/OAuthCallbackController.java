@@ -18,6 +18,12 @@ import java.util.Base64;
 import java.util.Map;
 
 @Controller
+
+/*
+ * callback  from google once the user is validated
+ * Token exchange and auth code grant
+ */
+
 public class OAuthCallbackController {
     @Value("${google.client-id}")
     private String clientId;

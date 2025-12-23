@@ -9,6 +9,12 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+
+/*
+Controller called to google for user -> google interation
+* user needs to validate username and password
+ */
+
 @RestController
 public class GoogleLoginController {
     @Value("${google.client-id}")
