@@ -1,4 +1,4 @@
-package org.tb.jgoauth;
+package org.tb.kbase.jgoauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

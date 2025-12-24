@@ -1,4 +1,4 @@
 .gradle
 .idea
 build
-src/main/resources/application.yml
+oauth/src/main/resources/application.yml

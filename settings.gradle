@@ -7,3 +7,5 @@ pluginManagement {
 
 
 rootProject.name = 'jgoauth'
+include 'oauth'
+include 'j-gRPC'

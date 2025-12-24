@@ -1,4 +1,4 @@
-package org.tb.jgoauth.controllers;
+package org.tb.kbase.jgoauth.controllers;
 
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.beans.factory.annotation.Value;
