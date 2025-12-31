@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.google.protobuf' version '0.9.4'
+}
+
+group = 'org.tb.kbase'
+version = '1.0.0'
+description = 'Grpc - Client project'
+
+application { //this helps in identifying the main class
+    mainClass = 'org.tb.KbaseGrpcClientMain'
+}
+
+
+test {
+    useJUnitPlatform()
+}

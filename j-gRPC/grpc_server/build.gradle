@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.google.protobuf' version '0.9.4'
+}
+
+application { //this helps in identifying the main class
+    mainClass = 'org.tb.KbaseGrpcMain'
+}
+
+
+group = 'org.tb'
+version = '0.0.1-SNAPSHOT'
+description = 'Grpc - Server project'
+
+

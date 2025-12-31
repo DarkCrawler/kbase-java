@@ -6,6 +6,8 @@ pluginManagement {
 }
 
 
-rootProject.name = 'jgoauth'
+rootProject.name = 'kbase-java'
 include 'oauth'
 include 'j-gRPC'
+include 'j-gRPC:grpc_server'
+include 'j-gRPC:grpc_client'

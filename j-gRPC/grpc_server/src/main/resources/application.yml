@@ -4,4 +4,4 @@ grpc:
 
 spring:
   application:
-    name: kbase-grpc
+    name: kbase-grpc-server

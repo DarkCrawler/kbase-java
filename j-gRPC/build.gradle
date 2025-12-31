@@ -1,63 +1,75 @@
 plugins {
     id 'java'
-    id 'com.google.protobuf' version '0.9.4'
 }
+
 
 group = 'org.tb'
 version = '0.0.1-SNAPSHOT'
-description = 'Demo project to integrate login with google'
+description = 'Demo project for GrPC'
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-
-    implementation 'org.springframework.boot:spring-boot-starter'
-
-    // gRPC Spring Boot
-    implementation 'net.devh:grpc-server-spring-boot-starter:3.1.0.RELEASE'
-
-    //implementation 'io.grpc:grpc-netty-shaded:1.63.0'  //gRPC server runtime (Netty transport) --- not required with spring boot ?
-    implementation 'io.grpc:grpc-protobuf:1.63.0' //Converts Protobuf ↔ Java objects
-    implementation 'io.grpc:grpc-stub:1.63.0' //Generated client/server base classes
-
-
-    compileOnly 'org.apache.tomcat:annotations-api:6.0.53' //Fixes @Generated warnings on newer JDKs
-
-
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
 
-protobuf {
-    // Defines the Protobuf compiler
-    // 	Converts .proto -> .java
-    protoc {
-        artifact = "com.google.protobuf:protoc:3.25.3"
+subprojects {
+    apply plugin: 'java'
+
+    dependencies {
+
+        implementation 'org.springframework.boot:spring-boot-starter'
+
+        // gRPC Spring Boot
+        implementation 'net.devh:grpc-server-spring-boot-starter:3.1.0.RELEASE'
+
+        //implementation 'io.grpc:grpc-netty-shaded:1.63.0'  //gRPC server runtime (Netty transport) --- not required with spring boot ?
+        implementation 'io.grpc:grpc-protobuf:1.63.0' //Converts Protobuf ↔ Java objects
+        implementation 'io.grpc:grpc-stub:1.63.0' //Generated client/server base classes
+
+
+        compileOnly 'org.apache.tomcat:annotations-api:6.0.53' //Fixes @Generated warnings on newer JDKs
+
+
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
     }
+    
+    plugins.withId('com.google.protobuf') {
 
-    //gRPC code generator
-    // solves (no service stubs)
-    plugins {
-        grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.63.0"
-        }
-    }
+        protobuf {
+            // Defines the Protobuf compiler
+            // 	Converts .proto -> .java
+            protoc {
+                artifact = "com.google.protobuf:protoc:3.25.3"
+            }
+
+            //gRPC code generator
+            // solves (no service stubs)
+            plugins {
+                grpc {
+                    artifact = "io.grpc:protoc-gen-grpc-java:1.63.0"
+                }
+            }
 
 
-    //hooking Grpc in build life cycle
-    // ensures messages and service class generation
-    generateProtoTasks {
-        all().forEach {
-            it.plugins {
-                grpc {}
+            //hooking Grpc in build life cycle
+            // ensures messages and service class generation
+            generateProtoTasks {
+                all().forEach {
+                    it.plugins {
+                        grpc {}
+                    }
+                }
             }
         }
-    }
-}
 
-test {
-    useJUnitPlatform()
+    }
+
+
+    // common test setup
+    test {
+        useJUnitPlatform()
+    }
 }
