@@ -1,0 +1,7 @@
+grpc:
+  server:
+    port: 50051
+
+spring:
+  application:
+    name: kbase-grpc

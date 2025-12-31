@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.tb.grpc.samples";
+
+//generates java package
+option java_outer_classname = "CalculatorProto";
+
+package calculator;
+
+// Service definition
+service CalculatorService {
+    rpc Add (AddRequest) returns (AddResponse);
+}
+
+// Request message
+message AddRequest {
+    int32 a = 1;
+    int32 b = 2;
+}
+
+// Response message
+message AddResponse {
+    int32 result = 1;
+}
