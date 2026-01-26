@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.skibidi'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+}
+
+test {
+    useJUnitPlatform()
+}

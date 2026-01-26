@@ -1,0 +1,18 @@
+grpc:
+  server:
+    port: 9093
+
+server:
+  port: 9092
+management:
+  server:
+    port: 9060
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,threaddump,heapdump
+logging:
+  level:
+    root: INFO
+
+

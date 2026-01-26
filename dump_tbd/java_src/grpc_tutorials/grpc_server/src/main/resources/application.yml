@@ -1,0 +1,18 @@
+grpc:
+  server:
+    port: 9081
+    
+server:
+  port: 9080
+management:
+  server:
+    port: 9050
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,threaddump,heapdump
+logging:
+  level:
+    root: INFO
+
+

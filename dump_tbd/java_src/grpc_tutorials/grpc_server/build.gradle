@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.grpc.server'
+version = '1.0.0'
+
+
+dependencies {
+    implementation project(':grpc_tutorials:gprc_proto_def')
+}
+
+test {
+    useJUnitPlatform()
+}
